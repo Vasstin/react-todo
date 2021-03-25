@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './Form.css';
 import Card from '../UI/Card';
@@ -10,7 +10,7 @@ const Form = React.memo(props => {
   };
 
   return (
-    <section className="ingredient-form">
+    <section className="form">
       <Card>
         <form onSubmit={submitHandler}>
           <div className="form-control">

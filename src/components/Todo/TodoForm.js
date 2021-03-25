@@ -12,7 +12,7 @@ const TodoForm = React.memo(props => {
   };
 
   return (
-    <section className="ingredient-form">
+    <section className="todo-form">
       <Card>
         <form onSubmit={submitHandler}>
           <div className="form-control">
