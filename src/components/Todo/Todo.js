@@ -16,13 +16,10 @@ function Todo() {
     setTask(prevTask => prevTask.filter(ing => ing.id !== id))
   }
   
-  // const editTaskHandler = (id) => {
-
-  // }
 
   return (
     <div className="App">
-      <TodoForm onAddTask = {addTaskHandler} />
+      <TodoForm onAddTask = {addTaskHandler} btnType = {'add'}/>
       <section>
        <TodoList task = {task} onRemoveTask = {removeTaskHandler} />
       </section>

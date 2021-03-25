@@ -1,0 +1,11 @@
+.form {
+  width: 30rem;
+  margin: 2rem auto;
+  width: 200px;
+}
+
+.form__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

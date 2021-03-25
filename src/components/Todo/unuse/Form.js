@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Form.css';
 import Card from '../UI/Card';
 
 const Form = React.memo(props => {
-
+  const [question, setQuestion] = useState('')
+  
   const submitHandler = event => {
     event.preventDefault();
+    props.onSaveTask({title: question})
   };
+
+  console.log(question)
 
   return (
     <section className="form">
@@ -18,12 +22,12 @@ const Form = React.memo(props => {
               type="text" 
               id="title" 
               placeholder = "What todo?" 
-              // value = {question} 
-              // onChange = {event => setQuestion(event.target.value)}
+              value = {question} 
+              onChange = {event => setQuestion(event.target.value)}
             />
           </div>
-          <div className="ingredient-form__actions">
-            <button type="submit">Add</button>
+          <div className="form__actions">
+            <button type="submit">Save</button>
           </div>
         </form>
       </Card>
