@@ -16,6 +16,8 @@ const TodoList = props => {
             title = {ig.title}
             onRemoveTask = {props.onRemoveTask}
             id = {ig.id}
+            onAddTask = {props.onAddTask}
+            onRemoveForm = {props.onRemoveForm}
          />
         ))}
       </ul>

@@ -7,7 +7,7 @@ import TodoList from './TodoList'
 
 function Todo() {
   const [task, setTask] = useState([]);
-  
+
   const addTaskHandler = task => {
     setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
   }
@@ -15,13 +15,19 @@ function Todo() {
   const removeTaskHandler = id => {
     setTask(prevTask => prevTask.filter(ing => ing.id !== id))
   }
+
+
+
+  // const removeFormHandler = task => {
+  //   setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
+  // }
   
 
   return (
     <div className="App">
-      <TodoForm onAddTask = {addTaskHandler} btnType = {'add'}/>
+      <TodoForm onAddTask = {addTaskHandler} onRemoveTask = {removeTaskHandler} btnType = {'add'}/>
       <section>
-       <TodoList task = {task} onRemoveTask = {removeTaskHandler} />
+       <TodoList /*onRemoveForm = {removeFormHandler}*/ onAddTask = {addTaskHandler} task = {task} onRemoveTask = {removeTaskHandler} />
       </section>
     </div>
   );
