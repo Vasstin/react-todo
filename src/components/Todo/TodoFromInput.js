@@ -4,6 +4,10 @@ const TodoFormInput = props => {
   const [question, setQuestion] = useState('')
   console.log(props)
   let button = null
+  const sumFunk = () => {
+    props.onAddTask({title: question})
+    props.onRemoveForm(true)
+  }
 
   if(props.btnType === 'add') {
     button = <button
@@ -14,7 +18,7 @@ const TodoFormInput = props => {
   } else {
     button = <button
     className = {props.className}  
-    onClick = {() => props.onRemoveForm(true)}>
+    onClick = {() => sumFunk()}>
       {props.btnType === 'add' ? 'Add' : 'Save' }
   </button>
   }
