@@ -2,11 +2,13 @@ import React, { useState } from "react";
 
 const TodoFormInput = props => {
   const [question, setQuestion] = useState('')
-  console.log(props)
+  
   let button = null
   const sumFunk = () => {
-    props.onAddTask({title: question})
+    props.onEditTask(props.id, question)
+    //props.onAddTask({title: question})
     props.onRemoveForm(true)
+    
   }
 
   if(props.btnType === 'add') {
@@ -18,7 +20,7 @@ const TodoFormInput = props => {
   } else {
     button = <button
     className = {props.className}  
-    onClick = {() => sumFunk()}>
+    onClick = {(() => sumFunk())}>
       {props.btnType === 'add' ? 'Add' : 'Save' }
   </button>
   }

@@ -9,17 +9,16 @@ const TodoItem = props => {
   const [ editState, setEditState ] = useState(false)
   const [formState, setFormState] = useState(false);
   
-  // const saveTaskHandler = task => {
-  //   setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
-  // }
   const editTaskHandler = () => {
     setEditState(true)
+    setFormState(false)
   }
 
   const removeFormHandler = (state) => {
+    setEditState(false)
     setFormState(state)
   }
-
+  //console.log(props.id)
   let form = null
   let li = (
     <Item 
@@ -31,12 +30,30 @@ const TodoItem = props => {
   )
   
   if(editState) {
-    form = <TodoForm onRemoveForm = {removeFormHandler} onRemoveTask = {props.onRemoveTask} onAddTask = {props.onAddTask} close = {true} formStyle = 'edit-form' btnType = {'save'}  /*task = {task}*/ />
+    form = 
+      <TodoForm 
+        onRemoveForm = {removeFormHandler} 
+        onRemoveTask = {props.onRemoveTask} 
+        onAddTask = {props.onAddTask} 
+        onEditTask = {props.onEditTask}
+        id = {props.id}
+        close = {true} 
+        formStyle = 'edit-form' 
+        btnType = {'save'}  /*task = {task}*/ 
+      />
     li = null
   } 
 
   if(formState) {
     form = null
+    li = (
+      <Item 
+        title = {props.title}
+        id = {props.id}>
+          <button onClick = {editTaskHandler}>Edit</button>
+          <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
+      </Item>
+    )
   }
  
   return (

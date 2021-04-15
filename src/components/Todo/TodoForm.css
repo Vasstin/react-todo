@@ -33,7 +33,11 @@
   display: flex;
   width: 200px;
   margin: 2rem auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
   display: flex;
   text-align: center;
+  min-height: 150px;
   justify-content: space-between;
+  box-sizing: border-box;
 }
