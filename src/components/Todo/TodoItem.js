@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 
 import './TodoItem.css';
-import Item from './Item';
+//import Item from './Item';
 import TodoForm from './TodoForm'
 
 const TodoItem = props => {
@@ -21,12 +21,25 @@ const TodoItem = props => {
   //console.log(props.id)
   let form = null
   let li = (
-    <Item 
-      title = {props.title}
-      id = {props.id}>
+
+    <li className = 'todoItemLi' id = {props.id}>
+      <input id = 'inputTitle' name = 'inputTitle' type = "checkbox" /> 
+      <div className = 'inputBox'>
+        <label for = 'inputTitle'>{props.title}</label>
         <button onClick = {editTaskHandler}>Edit</button>
         <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
-    </Item>
+        
+      </div>
+    </li>
+    // <Item 
+    //   title = {props.title}
+    //   id = {props.id}>
+    //     <div>
+    //     <input className = 'inputCheckbox' type = "checkbox" />
+    //     </div>
+    //     <button onClick = {editTaskHandler}>Edit</button>
+    //     <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
+    // </Item>
   )
   
   if(editState) {
@@ -47,12 +60,15 @@ const TodoItem = props => {
   if(formState) {
     form = null
     li = (
-      <Item 
-        title = {props.title}
-        id = {props.id}>
-          <button onClick = {editTaskHandler}>Edit</button>
-          <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
-      </Item>
+      <li className = 'todoItemLi' id = {props.id}>
+      <input id = 'inputTitle' name = 'inputTitle' type = "checkbox" /> 
+      <div className = 'inputBox'>
+        <label for = 'inputTitle'>{props.title}</label>
+        <button onClick = {editTaskHandler}>Edit</button>
+        <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
+        
+      </div>
+    </li>
     )
   }
  

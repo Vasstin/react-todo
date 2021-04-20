@@ -13,7 +13,6 @@ const TodoList = props => {
       
       <ul>
         {props.task.map(ig => (
-          <div>
             <TodoItem 
               key = {ig.id} 
               title = {ig.title}
@@ -23,7 +22,6 @@ const TodoList = props => {
               onRemoveForm = {props.onRemoveForm}
               onEditTask = {props.onEditTask}
             />
-          </div>
          
         ))}
       </ul>
