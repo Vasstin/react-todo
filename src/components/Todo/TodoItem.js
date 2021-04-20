@@ -7,7 +7,8 @@ import TodoForm from './TodoForm'
 
 const TodoItem = props => {
   const [ editState, setEditState ] = useState(false)
-  const [formState, setFormState] = useState(false);
+  const [ formState, setFormState ] = useState(false);
+  const [ checkboxState, setCheckboxState ] = useState(false)
   
   const editTaskHandler = () => {
     setEditState(true)
@@ -23,23 +24,19 @@ const TodoItem = props => {
   let li = (
 
     <li className = 'todoItemLi' id = {props.id}>
-      <input id = 'inputTitle' name = 'inputTitle' type = "checkbox" /> 
+      <input 
+        checked = {checkboxState} 
+        id = 'inputTitle' 
+        name = 'inputTitle' 
+        type = "checkbox"
+        onChange = {() => {setCheckboxState(!checkboxState)}}
+      /> 
       <div className = 'inputBox'>
-        <label for = 'inputTitle'>{props.title}</label>
-        <button onClick = {editTaskHandler}>Edit</button>
-        <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
-        
+        <label htmlFor = 'inputTitle'>{props.title}</label>
+        <button disabled = {checkboxState} onClick = {editTaskHandler}>Edit</button>
+        <button disabled = {checkboxState} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
       </div>
     </li>
-    // <Item 
-    //   title = {props.title}
-    //   id = {props.id}>
-    //     <div>
-    //     <input className = 'inputCheckbox' type = "checkbox" />
-    //     </div>
-    //     <button onClick = {editTaskHandler}>Edit</button>
-    //     <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
-    // </Item>
   )
   
   if(editState) {
@@ -61,12 +58,17 @@ const TodoItem = props => {
     form = null
     li = (
       <li className = 'todoItemLi' id = {props.id}>
-      <input id = 'inputTitle' name = 'inputTitle' type = "checkbox" /> 
+      <input 
+        checked = {checkboxState} 
+        id = 'inputTitle' 
+        name = 'inputTitle' 
+        type = "checkbox"
+        onChange = {() => {setCheckboxState(!checkboxState)}}
+      /> 
       <div className = 'inputBox'>
-        <label for = 'inputTitle'>{props.title}</label>
-        <button onClick = {editTaskHandler}>Edit</button>
-        <button onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
-        
+        <label htmlFor = 'inputTitle'>{props.title}</label>
+        <button disabled = {checkboxState} onClick = {editTaskHandler}>Edit</button>
+        <button disabled = {checkboxState} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
       </div>
     </li>
     )
