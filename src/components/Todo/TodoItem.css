@@ -24,11 +24,18 @@
   width: 150px; 
 }
 
-#inputTitle:checked ~ .inputBox label {
+.disabled {
+  display: flex;
+  flex-direction: column;
+  width: 150px; 
+}
+
+.disabled label {
+  
   text-decoration: line-through;
 }
 
-#inputTitle:checked ~ .inputBox button {
+.disabled  button {
   background: grey;
   padding: 0.5rem 2rem;
   color: rgb(17, 16, 16);

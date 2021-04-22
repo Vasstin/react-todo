@@ -23,16 +23,16 @@ const TodoItem = props => {
   let form = null
   let li = (
 
-    <li className = 'todoItemLi' id = {props.id}>
+    <li className = 'todoItemLi'>
       <input 
         checked = {checkboxState} 
-        id = 'inputTitle' 
+        id = {props.id}
         name = 'inputTitle' 
         type = "checkbox"
         onChange = {() => {setCheckboxState(!checkboxState)}}
       /> 
-      <div className = 'inputBox'>
-        <label htmlFor = 'inputTitle'>{props.title}</label>
+      <div className = {checkboxState === true ? 'disabled' : 'inputBox'}>
+        <label htmlFor = {props.id} >{props.title}</label>
         <button disabled = {checkboxState} onClick = {editTaskHandler}>Edit</button>
         <button disabled = {checkboxState} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
       </div>
@@ -57,16 +57,16 @@ const TodoItem = props => {
   if(formState) {
     form = null
     li = (
-      <li className = 'todoItemLi' id = {props.id}>
+      <li className = 'todoItemLi' >
       <input 
         checked = {checkboxState} 
-        id = 'inputTitle' 
+        id = {props.id}
         name = 'inputTitle' 
         type = "checkbox"
         onChange = {() => {setCheckboxState(!checkboxState)}}
       /> 
-      <div className = 'inputBox'>
-        <label htmlFor = 'inputTitle'>{props.title}</label>
+      <div className = {checkboxState === true ? 'disabled' : 'inputBox'}>
+        <label htmlFor = {props.id} >{props.title}</label>
         <button disabled = {checkboxState} onClick = {editTaskHandler}>Edit</button>
         <button disabled = {checkboxState} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
       </div>

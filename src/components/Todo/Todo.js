@@ -15,7 +15,7 @@ function Todo() {
   const removeTaskHandler = id => {
     setTask(prevTask => prevTask.filter(ing => ing.id !== id))
   }
-  console.log(task)
+  //console.log(task)
 
   const editTaskHandler = (id, newTask) => {
     const arr = task.map(item => {

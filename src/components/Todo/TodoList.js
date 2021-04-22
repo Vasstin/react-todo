@@ -6,7 +6,6 @@ import TodoItem from './TodoItem';
 
 const TodoList = props => {
  
-  console.log(props.task)
   return (
     <section className="ingredient-list">
       <h2>Loaded Tasks</h2>
