@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import TodoForm from './TodoForm';
@@ -6,16 +6,24 @@ import TodoList from './TodoList'
 // import Search from './Search';
 
 function Todo() {
-  const [task, setTask] = useState([]);
+  // useEffect(() => {
+  //   setTask(JSON.parse(localStorage.getItem('task')) || [])
+  // }, [])
 
-  const addTaskHandler = task => {
-    setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
+  const [task, setTask] = useState(JSON.parse(localStorage.getItem('task')) || []);
+
+  useEffect(() => {
+    localStorage.setItem('task', JSON.stringify(task))
+  },[task])
+
+  
+  const addTaskHandler = title => {
+    setTask([...task, {id: uuidv4(), title, done: false}])
   }
 
   const removeTaskHandler = id => {
     setTask(prevTask => prevTask.filter(ing => ing.id !== id))
   }
-  //console.log(task)
 
   const editTaskHandler = (id, newTask) => {
     const arr = task.map(item => {
@@ -30,6 +38,8 @@ function Todo() {
     })
   
     setTask(arr)
+
+    
 
     // setTask(task.map(item => {
     //   if (item.id === id) {
@@ -52,28 +62,36 @@ function Todo() {
     //setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
     //setTask(prevTask => prevTask.filter(ing => ing.id !== id))
   }
-  //console.log(task)
+  const editTodoDoneStat = (id) => {
+    const arr = task.map(todo => {
+      if (todo.id = id) {
+        return {
+          ...todo,
+          done: !todo.done
+        } 
+      } else {
+        return todo
+      }
+    })
 
+    //console.log(arr)
+    setTask(arr)
+  }
 
-  // const removeFormHandler = task => {
-  //   setTask(prevTask => [...prevTask, {id: uuidv4(), ...task}])
-  // }
-  
   return (
     <div className="App">
       <TodoForm 
         onAddTask = {addTaskHandler} 
         onRemoveTask = {removeTaskHandler}
-        // onEditTask = {editTaskHandler}
         btnType = {'add'}
       />
       <section>
        <TodoList /*onRemoveForm = {removeFormHandler}*/ 
           onAddTask = {addTaskHandler} /*вложенная форма*/
           onEditTask = {editTaskHandler}
+          onEditTodoDoneStat = {editTodoDoneStat}
           task = {task} 
-          onRemoveTask = 
-          {removeTaskHandler} 
+          onRemoveTask = {removeTaskHandler} 
        />
       </section>
     </div>

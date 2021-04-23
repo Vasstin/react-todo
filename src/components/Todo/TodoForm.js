@@ -5,7 +5,6 @@ import TodoFormInput from './TodoFromInput'
 import './TodoForm.css';
 
 const TodoForm = React.memo(props => {
-  
   return (
     <section className = {props.formStyle === 'edit-form' ? 'edit-form' : 'todo-form'} >
       <Card>
@@ -16,6 +15,7 @@ const TodoForm = React.memo(props => {
           onEditTask = {props.onEditTask}
           btnType = {props.btnType}
           id = {props.id}
+
         />
       </Card>
     </section>

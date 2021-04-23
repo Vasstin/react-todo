@@ -14,7 +14,7 @@ const TodoFormInput = props => {
   if(props.btnType === 'add') {
     button = <button
     className = {props.className}  
-    onClick = {() => props.onAddTask({title: question})}>
+    onClick = {() => props.onAddTask(question)}>
       {props.btnType === 'add' ? 'Add' : 'Save' }
   </button>
   } else {
@@ -35,7 +35,7 @@ const TodoFormInput = props => {
           id="title" 
           placeholder = "What todo?" 
           value = {question} 
-          onChange = {event => setQuestion(event.target.value)}
+          onChange = {event => {setQuestion(event.target.value)}}
         />
       </div>
       <div className="ingredient-form__actions">

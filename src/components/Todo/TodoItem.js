@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 
 import './TodoItem.css';
@@ -9,7 +9,9 @@ const TodoItem = props => {
   const [ editState, setEditState ] = useState(false)
   const [ formState, setFormState ] = useState(false);
   const [ checkboxState, setCheckboxState ] = useState(false)
-  
+
+  console.log(props)
+
   const editTaskHandler = () => {
     setEditState(true)
     setFormState(false)
@@ -19,22 +21,22 @@ const TodoItem = props => {
     setEditState(false)
     setFormState(state)
   }
-  //console.log(props.id)
+
   let form = null
   let li = (
 
     <li className = 'todoItemLi'>
       <input 
-        checked = {checkboxState} 
+        checked = {props.done} 
         id = {props.id}
         name = 'inputTitle' 
         type = "checkbox"
-        onChange = {() => {setCheckboxState(!checkboxState)}}
+        onChange = {props.onEditTodoDoneStat.bind(this, props.id)}
       /> 
-      <div className = {checkboxState === true ? 'disabled' : 'inputBox'}>
+      <div className = {props.done ? 'disabled' : 'inputBox'}>
         <label htmlFor = {props.id} >{props.title}</label>
-        <button disabled = {checkboxState} onClick = {editTaskHandler}>Edit</button>
-        <button disabled = {checkboxState} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
+        <button disabled = {props.done} onClick = {editTaskHandler}>Edit</button>
+        <button disabled = {props.done} onClick = {props.onRemoveTask.bind(this, props.id)}>Delete</button>
       </div>
     </li>
   )
