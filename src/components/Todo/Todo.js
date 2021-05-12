@@ -64,7 +64,7 @@ function Todo() {
   }
   const editTodoDoneStat = (id) => {
     const arr = task.map(todo => {
-      if (todo.id = id) {
+      if (todo.id === id) {
         return {
           ...todo,
           done: !todo.done
